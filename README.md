@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Switch Signal
 
-## Getting Started
+Switch Signal is a polished, motion-rich relationship-dynamic personality quiz built with Next.js 16, TypeScript, Tailwind CSS v4, shadcn-style UI primitives, and Framer Motion. It is designed to feel like a real consumer product: soft-luxe visuals, tactile interactions, a screenshot-worthy result reveal, and bilingual Thai-first UI with a built-in language toggle.
 
-First, run the development server:
+## Setup
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Overview
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Landing page with premium editorial hero, teaser card, and productized explanation
+- Quiz flow with 16 local questions, 4 choices each, progress tracking, previous/next flow, restart, and animated transitions
+- Result page with archetype reveal, axis visualizations, insight cards, and a dedicated social-share style result card
+- Thai-first copy across landing, quiz, and result pages with persistent Thai/English language switching
+- No backend for v1; quiz state is stored client-side and mirrored into `sessionStorage`
 
-## Learn More
+## Folder Structure
 
-To learn more about Next.js, take a look at the following resources:
+```text
+src/
+  app/
+    page.tsx
+    quiz/page.tsx
+    result/page.tsx
+    layout.tsx
+    globals.css
+  components/
+    floating-background.tsx
+    footer-disclaimer.tsx
+    hero-section.tsx
+    providers/quiz-provider.tsx
+    quiz/
+    result/
+    ui/
+  data/
+    archetypes.ts
+    questions.ts
+  lib/
+    scoring.ts
+    utils.ts
+  types/
+    quiz.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scoring System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Five axes drive the quiz: `L` Lead, `C` Care, `S` Soft, `T` Tease, `F` Flex
+- Each answer contributes points to one or more axes
+- After 16 questions, direction is computed as `L - S`
+- Classification rules:
+  - `direction >= 3`: Seme side
+  - `direction <= -3`: Uke side
+  - otherwise: Versatile / Seke
+- Seme subtypes:
+  - Puppy Seme: `L >= 6 && C >= 8 && T >= 6`
+  - Gentle Seme: `C >= 9 && L >= 7 && C >= T`
+  - otherwise King Seme
+- Uke subtypes:
+  - Queen Uke: `S >= 7 && T >= 8`
+  - Fierce Uke: `S >= 7 && (L >= 6 || T >= 6)`
+  - otherwise Pure Uke
 
-## Deploy on Vercel
+## Design Notes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Editorial typography pairs a high-contrast serif display face with a modern sans for app readability
+- The visual system relies on soft gradients, blurred glass surfaces, luminous shadows, and rounded geometry instead of generic Tailwind defaults
+- Motion is used throughout for pacing and emotional payoff, while `prefers-reduced-motion` is respected
+- Result design is intentionally centered and dense enough to feel collectible in screenshots without feeling cluttered
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Future Enhancements
+
+- Result image export
+- localStorage history
+- Nickname input
+- Theme toggle
+- Analytics hooks
+- Unit tests for score classification
+- Optional ambient sound toggle

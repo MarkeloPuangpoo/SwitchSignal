@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f2ef;
+  --foreground: #18181b;
+  --card: rgba(255, 255, 255, 0.58);
+  --line: rgba(255, 255, 255, 0.5);
+  --font-body:
+    "LINE Seed Sans TH", "Noto Sans Thai", "Sukhumvit Set", "Avenir Next",
+    "Avenir", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display:
+    "Noto Serif Thai", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    Palatino, "Times New Roman", serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-zinc-200/60;
+  }
+
+  html {
+    @apply min-h-full;
+  }
+
+  body {
+    @apply min-h-full font-sans;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 32%),
+      radial-gradient(circle at 88% 14%, rgba(254, 215, 226, 0.34), rgba(254, 215, 226, 0) 28%),
+      radial-gradient(circle at 50% 100%, rgba(191, 219, 254, 0.18), rgba(191, 219, 254, 0) 34%),
+      linear-gradient(180deg, #fff8f5 0%, #f8f1ed 48%, #f6efea 100%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), serif;
+  }
+
+  ::selection {
+    background: rgba(244, 114, 182, 0.22);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .app-shell {
+    @apply relative min-h-screen overflow-hidden;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0) 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+  }
+
+  .glass-panel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.1);
+    backdrop-filter: blur(24px);
+  }
+
+  .section-frame {
+    @apply relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }

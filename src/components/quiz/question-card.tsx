@@ -7,14 +7,23 @@ import { t } from "@/lib/i18n";
 import { useLocale } from "@/components/providers/locale-provider";
 import { Card } from "@/components/ui/card";
 import { AnswerOption } from "@/components/quiz/answer-option";
-import type { QuizQuestion } from "@/types/quiz";
+import type { LocalizedText } from "@/types/quiz";
+
+interface QuestionCardShape {
+  id: number;
+  prompt: LocalizedText;
+  answers: Array<{
+    id: string;
+    label: LocalizedText;
+  }>;
+}
 
 export function QuestionCard({
   question,
   selectedAnswerId,
   onSelect,
 }: {
-  question: QuizQuestion;
+  question: QuestionCardShape;
   selectedAnswerId?: string;
   onSelect: (answerId: string) => void;
 }) {

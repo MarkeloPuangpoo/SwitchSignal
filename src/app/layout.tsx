@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: siteConfig.name,
   title: {
-    default: "Switch Signal | A Premium Relationship-Dynamic Personality Quiz",
+    default: "Switch Signal | A Modern Quiz-Game Hub",
     template: "%s | Switch Signal",
   },
   description: siteConfig.description,
@@ -24,20 +24,29 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Switch Signal | A Premium Relationship-Dynamic Personality Quiz",
+    title: "Switch Signal | A Modern Quiz-Game Hub",
     description: siteConfig.description,
     url: siteUrl,
     siteName: siteConfig.name,
     locale: "th_TH",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Switch Signal",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Switch Signal | A Premium Relationship-Dynamic Personality Quiz",
+    title: "Switch Signal | A Modern Quiz-Game Hub",
     description: siteConfig.description,
     creator: `@${siteConfig.creator}`,
+    images: ["/og-image.png"],
   },
-  category: "personality quiz",
+  category: "quiz-game hub",
   referrer: "origin-when-cross-origin",
   appleWebApp: {
     capable: true,

@@ -18,7 +18,7 @@ export function FooterDisclaimer() {
         <div className="relative">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,207,232,0.24),rgba(251,207,232,0)_38%),radial-gradient(circle_at_bottom_right,rgba(191,219,254,0.2),rgba(191,219,254,0)_34%)]" />
 
-          <div className="relative grid gap-5 p-5 sm:p-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-8 lg:p-7">
+          <div className="relative grid gap-5 p-5 sm:p-6 xl:grid-cols-[1.15fr_0.85fr] xl:items-end xl:gap-8 xl:p-7">
             <div className="space-y-4">
               <Pill>{t(appCopy.footer.pill, locale)}</Pill>
               <div className="space-y-3">
@@ -40,12 +40,12 @@ export function FooterDisclaimer() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-3 lg:items-end">
+            <div className="grid gap-3 md:grid-cols-[1fr_1fr] xl:grid-cols-1 xl:items-end">
               <Link
                 href="https://github.com/MarkeloPuangpoo"
                 target="_blank"
                 rel="noreferrer"
-                className="group w-full max-w-sm"
+                className="group w-full xl:max-w-sm"
               >
                 <div className="rounded-[1.6rem] border border-white/55 bg-white/62 p-4 shadow-[0_16px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/76 hover:shadow-[0_22px_55px_rgba(15,23,42,0.1)]">
                   <div className="flex items-center justify-between gap-4">
@@ -65,7 +65,7 @@ export function FooterDisclaimer() {
                 </div>
               </Link>
 
-              <div className="max-w-sm rounded-[1.4rem] border border-white/45 bg-white/42 px-4 py-3 text-zinc-600 shadow-[0_12px_30px_rgba(15,23,42,0.05)]">
+              <div className="rounded-[1.4rem] border border-white/45 bg-white/42 px-4 py-3 text-zinc-600 shadow-[0_12px_30px_rgba(15,23,42,0.05)] xl:max-w-sm">
                 <div className="mb-1 font-medium text-zinc-800">{t(appCopy.footer.disclaimerTitle, locale)}</div>
                 <p className={locale === "th" ? "text-[0.9rem] leading-6" : "text-sm leading-6"}>{t(appCopy.footerDisclaimer, locale)}</p>
               </div>
@@ -73,7 +73,7 @@ export function FooterDisclaimer() {
           </div>
 
           <div className="relative border-t border-white/45 px-5 py-3 text-zinc-500 sm:px-6 lg:px-7">
-            <p className={locale === "th" ? "text-[0.82rem] tracking-[0.01em]" : "text-xs uppercase tracking-[0.18em]"}>
+            <p className={locale === "th" ? "text-[0.82rem] tracking-[0.01em]" : "text-xs tracking-[0.06em]"}>
               {t(appCopy.footer.bottomNote, locale)}
             </p>
           </div>

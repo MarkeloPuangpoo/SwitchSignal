@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { appCopy } from "@/data/copy";
+import { gameRegistry } from "@/data/games";
 import { t } from "@/lib/i18n";
 
 export default function NotFound() {
   const { locale } = useLocale();
+  const featuredGame = gameRegistry[0];
 
   return (
     <main className="app-shell">
@@ -41,7 +43,7 @@ export default function NotFound() {
                     {t(appCopy.notFound.primary, locale)}
                   </Button>
                 </Link>
-                <Link href="/quiz">
+                <Link href={featuredGame?.href ?? "/"}>
                   <Button variant="secondary" size="lg" className="w-full sm:w-auto">
                     {t(appCopy.notFound.secondary, locale)}
                     <ArrowRight className="h-4 w-4" />
@@ -81,9 +83,9 @@ export default function NotFound() {
 
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    t({ th: "นำ", en: "Lead" }, locale),
-                    t({ th: "อ่อนโยน", en: "Soft" }, locale),
-                    t({ th: "ยืดหยุ่น", en: "Flex" }, locale),
+                    t({ th: "เกม", en: "Games" }, locale),
+                    t({ th: "ภาษา", en: "Languages" }, locale),
+                    t({ th: "โหมด", en: "Modes" }, locale),
                   ].map((label, index) => (
                     <div
                       key={label}
@@ -92,7 +94,9 @@ export default function NotFound() {
                       <div className={`text-zinc-500 ${locale === "th" ? "text-[0.78rem] tracking-[0.01em]" : "text-[0.68rem] uppercase tracking-[0.18em]"}`}>
                         {label}
                       </div>
-                      <div className="mt-2 text-xl font-semibold text-zinc-900">{[40, 84, 62][index]}</div>
+                      <div className="mt-2 text-xl font-semibold text-zinc-900">
+                        {[String(gameRegistry.length).padStart(2, "0"), "TH/EN", locale === "th" ? "เดี่ยว" : "Solo"][index]}
+                      </div>
                     </div>
                   ))}
                 </div>

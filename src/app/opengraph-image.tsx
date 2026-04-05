@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Switch Signal - A premium relationship-dynamic personality quiz";
+export const alt = "Switch Signal - A modern quiz-game hub";
 export const size = {
   width: 1200,
   height: 630,
@@ -72,7 +72,7 @@ export default function Image() {
                 border: "1px solid rgba(255,255,255,0.65)",
               }}
             >
-              Relationship Dynamic Quiz
+              Modern Quiz-Game Hub
             </div>
           </div>
 
@@ -103,8 +103,8 @@ export default function Image() {
                 color: "#3f3f46",
               }}
             >
-              A premium Thai-first personality quiz for relationship dynamics,
-              soft chemistry, and screenshot-worthy archetype reveals.
+              A Thai-first hub for stylish quiz games, character reads, and
+              share-worthy interactive drops.
             </div>
           </div>
 
@@ -119,7 +119,7 @@ export default function Image() {
           >
             <div style={{ display: "flex" }}>switchsignal.app</div>
             <div style={{ display: "flex", gap: 12 }}>
-              {["Lead", "Care", "Soft", "Tease", "Flex"].map((label) => (
+              {["Character", "Quiz Games", "TH/EN", "Shareable", "Live Now"].map((label) => (
                 <div
                   key={label}
                   style={{

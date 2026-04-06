@@ -2,6 +2,34 @@ import type { GameDefinition } from "@/types/game";
 
 export const gameRegistry: GameDefinition[] = [
   {
+    id: "inner-light-atlas",
+    slug: "inner-light",
+    title: {
+      th: "ประกายข้างในตัวคุณ",
+      en: "The Name of Your Inner Light",
+    },
+    category: {
+      th: "เกมค้นหาตัวตนเชิงกวี",
+      en: "Poetic self-discovery game",
+    },
+    description: {
+      th: "เกม 16 ข้อที่พาคุณเดินผ่าน 4 ห้องในใจตัวเอง ตั้งแต่แสงและสี ไปจนถึงชื่อของประกายที่กำลังก่อตัวอยู่ข้างใน",
+      en: "A 16-question poetic game that leads you through four inner rooms, from light and color to the name of the spark still forming inside you.",
+    },
+    hook: {
+      th: "ละเอียด ละมุน และจบด้วยผลลัพธ์ที่เหมือนอ่านบทกวีประจำตัวมากกว่าทำควิซธรรมดา",
+      en: "Elegant, intimate, and designed to end like a personal poem rather than an ordinary quiz result.",
+    },
+    href: "/games/inner-light",
+    status: "live",
+    questionCount: 16,
+    accent: {
+      from: "from-violet-200",
+      via: "via-sky-100",
+      to: "to-amber-50",
+    },
+  },
+  {
     id: "school-vibe-check",
     slug: "student-or-school-legend",
     title: {

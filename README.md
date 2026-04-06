@@ -1,6 +1,6 @@
 # Switch Signal
 
-> A motion-rich personality quiz platform that reveals character archetypes through behavioral axes. Built to feel like a real consumer product — soft-luxe visuals, tactile interactions, screenshot-worthy result reveals, and a bilingual Thai-first UI.
+> A motion-rich Thai-first quiz-game hub for stylish personality formats, poetic self-discovery, and screenshot-worthy result reveals. Built to feel like a real consumer product with polished motion, collectible result cards, and multiple playable arcs.
 
 ---
 
@@ -16,6 +16,15 @@
 ---
 
 ## Changelog
+
+### v2.1 — Inner Light + Result Art Pass (2026-04-06)
+- Added **The Name of Your Inner Light** — a new 4-room poetic self-discovery game with 16 questions and 8 result endings
+- Introduced a new 5-axis poetic scoring model: `Glow`, `Veil`, `Tide`, `Flame`, and `Bloom`
+- Added interlude screens between the four sections so the flow reads like a guided emotional journey instead of a flat form
+- Built dedicated launcher, play, and result routes for the new game under `/games/inner-light`
+- Added full-background result artwork support for all 8 poetic endings using files from `public/<result-name>.png`
+- Added a very subtle artwork-origin micro-label inside the screenshot area
+- Refined the language toggle so it is smaller and fades away on scroll instead of sitting on top of key content
 
 ### v2.0 — School Arc
 - Added **Student or School Legend** — a second complete quiz with a dedicated 2-axis scoring system (`S` Structured / `E` Edge) and 5 school archetypes
@@ -129,6 +138,34 @@ Reveals how you carry yourself at school through 20 questions mapped to 2 axes.
 
 ---
 
+### Quiz 3 — The Name of Your Inner Light (Poetic Arc)
+**Route:** `/games/inner-light`
+
+A 16-question poetic game that walks players through four inner rooms: light and color, silence and wounds, love and connection, and hidden becoming.
+
+| Axis | Label |
+|---|---|
+| `G` | Glow |
+| `V` | Veil |
+| `T` | Tide |
+| `F` | Flame |
+| `B` | Bloom |
+
+**Archetypes:**
+
+| ID | Name (EN) |
+|---|---|
+| `quiet-flame` | The Quiet Flame |
+| `midnight-bloom` | The Midnight Bloom |
+| `tender-archive` | The Tender Archive |
+| `velvet-storm` | The Velvet Storm |
+| `soft-orbit` | The Soft Orbit |
+| `golden-wound` | The Golden Wound |
+| `hidden-spring` | The Hidden Spring |
+| `unfinished-light` | The Unfinished Light |
+
+---
+
 ## Project Structure
 
 ```
@@ -147,8 +184,16 @@ src/
 │   ├── result/
 │   │   └── page.tsx                      # Switch Signal result reveal
 │   └── games/
+│       ├── inner-light/
+│       │   ├── layout.tsx
+│       │   ├── page.tsx                  # Poetic Arc launcher
+│       │   ├── play/page.tsx             # Poetic Arc play flow
+│       │   └── result/page.tsx           # Poetic Arc result reveal
 │       └── student-or-school-legend/
-│           └── page.tsx                  # School Arc quiz
+│           ├── layout.tsx
+│           ├── page.tsx                  # School Arc launcher
+│           ├── play/page.tsx             # School Arc play flow
+│           └── result/page.tsx           # School Arc result reveal
 │
 ├── components/
 │   ├── floating-background.tsx
@@ -156,26 +201,38 @@ src/
 │   ├── hero-section.tsx
 │   ├── language-toggle.tsx
 │   ├── providers/
-│   │   └── quiz-provider.tsx
+│   │   ├── locale-provider.tsx
+│   │   ├── poetic-game-provider.tsx
+│   │   ├── quiz-provider.tsx
+│   │   └── school-game-provider.tsx
+│   ├── poetic-game/                      # Poetic Arc components
+│   │   ├── poetic-game-shell.tsx
+│   │   └── poetic-game-result.tsx
 │   ├── quiz/                             # Switch Signal quiz components
 │   ├── result/                           # Switch Signal result components
 │   ├── student-game/                     # School Arc components
 │   │   ├── student-game-shell.tsx
 │   │   └── student-game-result.tsx
-│   └── ui/                              # Shared UI primitives
+│   └── ui/                               # Shared UI primitives
 │
 ├── data/
 │   ├── questions.ts                      # Switch Signal questions (16)
 │   ├── archetypes.ts                     # Switch Signal archetypes (7)
-│   └── school-game.ts                   # School Arc questions (20) + archetypes (5)
+│   ├── school-game.ts                    # School Arc questions (20) + archetypes (5)
+│   ├── poetic-game.ts                    # Poetic Arc questions (16) + archetypes (8)
+│   └── games.ts                          # Hub registry for live games
 │
 ├── lib/
 │   ├── scoring.ts
+│   ├── school-game.ts
+│   ├── poetic-game.ts
+│   ├── seo.ts
 │   └── utils.ts
 │
 └── types/
     ├── quiz.ts
-    └── school-game.ts
+    ├── school-game.ts
+    └── poetic-game.ts
 ```
 
 ---
@@ -199,4 +256,4 @@ src/
 - [ ] Analytics integration
 - [ ] Unit tests for score classification
 - [ ] Optional ambient audio toggle
-- [ ] Quiz 3 (TBD)
+- [ ] Quiz 4 (TBD)
